@@ -14,7 +14,7 @@ function($scope, $resource, $routeParams, cityService){
 
     var weatherApi = $resource('http://api.openweathermap.org/data/2.5/forecast/daily');
     $scope.weatherResult = weatherApi.get({
-      q: 'Gdansk',
+      q: $scope.city,
       cnt: $scope.days,
       appid: '63e6a26d3cc0973cfbb7064f13c6e92a'
     }, function (res){
