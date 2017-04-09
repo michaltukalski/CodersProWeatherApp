@@ -40,8 +40,32 @@ weatherApp.controller('forecastController', ['$scope', '$resource', 'cityService
       q: 'Gdansk',
       cnt: 2,
       appid: '63e6a26d3cc0973cfbb7064f13c6e92a'
-    }).$promise.then(function(data){
-      console.log(data);
+    }, function (res){
+      console.log(res);
+      return res;
     });
+    //function(res, err){
+    //   if(err){
+    //
+    //     return;
+    //   }else{
+    //     return res;
+    //   }
+    // }
+    // $promise.then(function(data){
+    //  console.log(data);
+    //  return(data);
+    // }).catch(function(err){
+    //  console.log(err);
+//});
     $scope.city = cityService.city;
+    $scope.convertToCelsius = function (val){
+       return (val-273.15).toFixed(1);
+    };
+    $scope.displayDate = function (val){
+      var date =  new Date(val*1000);
+      //return date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
+      return date;
+    }
+
 }]);
